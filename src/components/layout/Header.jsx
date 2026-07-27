@@ -1,0 +1,17 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+
+const Header = () => {
+    return (
+        <div className='nav'>
+            <h1>SRIT99</h1>
+            <div>
+                <Link to='/'>Home</Link>
+                <Link to='/old'>Fetch Old</Link>
+                <Link to='/rc'>Fetch RC</Link>
+            </div>
+        </div>
+    )
+}
+
+export default Header

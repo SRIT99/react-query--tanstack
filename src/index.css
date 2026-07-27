@@ -109,3 +109,20 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+.nav {
+  display: flex;
+  background-color: #561919;
+  color: #08060d;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 300;
+  justify-content: space-between;
+  margin-bottom: 2px solid rgb(234, 229, 229);
+}
+.nav div{
+  display:flex;
+  gap:10px;
+  justify-content: space-evenly;
+  text-align: center;
+  padding-right: 30px;
+}
