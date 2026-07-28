@@ -19,21 +19,18 @@ const FetchOld = () => {
             getPostdata()
         }, [])
     return (
-        <div>
-            <ul>
-                {
-                    posts.map((elem) => {
-                        console.log(elem)
-                        const { id, title, body } = elem
-                        return (
-                            <li key={id}>
-                                <h1>{title}</h1>
-                                <p>{body}</p>
-                            </li>
-                        )
-                    })
-                }
-            </ul>
+        <div className="posts-container">
+            {posts?.map((elem) => {
+                const { id, title, body } = elem;
+
+                return (
+                    <div className="post-card" key={id}>
+                        <span className="post-id">#{id}</span>
+                        <h2>{title}</h2>
+                        <p>{body}</p>
+                    </div>
+                );
+            })}
         </div>
     )
 }

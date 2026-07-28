@@ -1,16 +1,19 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
 
 const Footer = () => {
     return (
-        <>
-            <h1>Github</h1>
-            <a href="https://github.com/STIT99">visit</a>
-            <p>
-                copyrights srit99
-            </p>
-        </>
-    )
-}
+        <footer className="footer">
+            <h2>GitHub</h2>
+            <a
+                href="https://github.com/STIT99"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Visit My GitHub
+            </a>
+            <p>© 2026 SRIT99. All rights reserved.</p>
+        </footer>
+    );
+};
 
-export default Footer
+export default Footer;

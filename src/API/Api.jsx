@@ -5,5 +5,5 @@ const api = axios.create({
 })
 
 export const fetchPosts = () => {
-    return api.get("/posts")
+    return api.get("/posts?_limit=20")
 }
