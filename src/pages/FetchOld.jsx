@@ -1,9 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { fetchPosts } from '../API/Api'
 
 const FetchOld = () => {
+    const [posts, setPosts] = useState([])
+    const getPostdata = async () => {
+        try {
+            const res = await fetchPosts()
+            res.status === 200 ? setPosts(res.data) : setPosts([])
+        }
+        catch (error) {
+            console.log(error)
+            setPosts([])
+        }
+
+    }
+    useEffect(
+        () => {
+            getPostdata()
+        }, [])
     return (
         <div>
-            <h1>FetchOld</h1>
+            <ul>
+                {
+                    posts.map((elem) => {
+                        console.log(elem)
+                        const { id, title, body } = elem
+                        return (
+                            <li key={id}>
+                                <h1>{title}</h1>
+                                <p>{body}</p>
+                            </li>
+                        )
+                    })
+                }
+            </ul>
         </div>
     )
 }
