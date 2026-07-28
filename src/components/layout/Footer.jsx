@@ -5,7 +5,7 @@ const Footer = () => {
         <footer className="footer">
             <h2>GitHub</h2>
             <a
-                href="https://github.com/STIT99"
+                href="https://github.com/SRIT99"
                 target="_blank"
                 rel="noopener noreferrer"
             >

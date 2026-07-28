@@ -15,10 +15,12 @@ const FetchRq = () => {
 
     }
 
-    const { data } = useQuery({
+    const { data, isLoading, isError, error } = useQuery({
         queryKey: ["posts"], //works like useState
         queryFn: getPostdata //works like useEffect
     })
+    if (isLoading) return <h2>Loading...</h2>
+    if (isError) return <h2>oops! Something Went Wrong: {error.message}</h2>
     return (
         <div className="posts-container">
             {data?.map((elem) => {
