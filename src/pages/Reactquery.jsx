@@ -10,6 +10,9 @@ const Reactquery = () => {
     const { data, isPending, isError } = useQuery({
         queryKey: ['comment'],
         queryFn: fetchcommentdata,
+        // gcTime: 1000,
+        //staleTime: 5000, //--> (500millisecond)5 second before data goes stale
+        staleTime: 3600000 //--> 60*60 *1000 ms = 1 hour before data goes stale.
     })
     if (isPending) return <h2>Loading...</h2>
     if (isError) return <h2>oops! Something Went Wrong</h2>
