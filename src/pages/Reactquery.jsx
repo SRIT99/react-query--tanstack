@@ -10,7 +10,7 @@ const Reactquery = () => {
     const { data, isPending, isError } = useQuery({
         queryKey: ['comment'],
         queryFn: fetchcommentdata,
-        // gcTime: 1000,
+        // gcTime: 1000, // --> the time up to which data stays in cache.
         //staleTime: 5000, //--> (500millisecond)5 second before data goes stale
         staleTime: 3600000 //--> 60*60 *1000 ms = 1 hour before data goes stale.
     })

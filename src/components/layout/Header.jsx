@@ -8,8 +8,10 @@ const Header = () => {
             <div>
                 <Link to='/'>Home</Link>
                 <Link to='/old'>Fetch Old</Link>
-                <Link to='/rc'>Fetch Rq</Link>
-                <Link to='/rq'>Fetch comments</Link>
+                <Link to='/polling'>Polling rq</Link>
+                {/* <Link to='/rc'>Fetch Rq</Link>
+                <Link to='/rq'>Fetch comments</Link> */}
+
             </div>
         </div>
     )
