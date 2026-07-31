@@ -1,6 +1,7 @@
 import React from 'react'
 import { fetchPosts } from '../API/Api'
 import { useQuery } from '@tanstack/react-query'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 
 const FetchRq = () => {
     const getPostdata = async () => {
@@ -17,7 +18,7 @@ const FetchRq = () => {
 
     const { data, isLoading, isError, error } = useQuery({
         queryKey: ["posts"], //works like useState
-        queryFn: getPostdata //works like useEffect
+        queryFn: getPostdata,//works like useEffect
     })
     if (isLoading) return <h2>Loading...</h2>
     if (isError) return <h2>oops! Something Went Wrong: {error.message}</h2>
@@ -28,13 +29,16 @@ const FetchRq = () => {
 
                 return (
                     <div className="post-card" key={id}>
-                        <span className="post-id">#{id}</span>
-                        <h2>{title}</h2>
-                        <p>{body}</p>
+                        <NavLink to={`/rc/${id}`} >
+                            <span className="post-id">#{id}</span>
+                            <h2>{title}</h2>
+                            <p>{body}</p>
+                        </NavLink>
+
                     </div>
                 );
             })}
-        </div>
+        </div >
     )
 }
 

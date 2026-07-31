@@ -19,7 +19,9 @@ const Polling = () => {
     const { data, isError, isPending, error } = useQuery({
         queryKey: ["market"],
         queryFn: livedata,
+        staleTime: 100000,
         refetchInterval: 1000,
+        // refetchIntervalInBackground:true, --> refetch in background or even when user moves out of scope.
     });
 
     if (isError) return <h1>Something went wrong: {error.message}</h1>;

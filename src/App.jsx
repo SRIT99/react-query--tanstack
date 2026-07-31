@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import Reactquery from './pages/Reactquery'
 import Polling from './pages/Polling'
+import MoreDetails from './components/ui/MoreDetails'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -21,17 +22,21 @@ const router = createBrowserRouter([
         path: '/old',
         element: <FetchOld />
       },
-      // {
-      //   path: '/rc',
-      //   element: <FetchRc />
-      // },
-      // {
-      //   path: '/rq',
-      //   element: <Reactquery />
-      // }
       {
-        path: '//polling',
+        path: '/rc',
+        element: <FetchRc />
+      },
+      {
+        path: '/rq',
+        element: <Reactquery />
+      },
+      {
+        path: '/polling',
         element: <Polling />
+      },
+      {
+        path: '/rc/:id',
+        element: <MoreDetails />
       }
     ]
   }
