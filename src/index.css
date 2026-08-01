@@ -273,3 +273,34 @@ a {
   opacity: .5;
   cursor: not-allowed;
 }
+.delete button {
+  min-width: 42px;
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--text-h);
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .25s ease;
+}
+
+.delete button:hover:not(:disabled) {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.delete button.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.delete button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}

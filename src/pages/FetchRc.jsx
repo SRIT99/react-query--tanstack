@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { fetchPosts } from '../API/Api'
-import { keepPreviousData, useQuery } from '@tanstack/react-query'
+import { deletePost, fetchPosts } from '../API/Api'
+import { keepPreviousData, useMutation, useQuery } from '@tanstack/react-query'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 
 const FetchRq = () => {
@@ -16,11 +16,21 @@ const FetchRq = () => {
         }
 
     }
-
     const { data, isLoading, isError, error } = useQuery({
         queryKey: ["posts", page], //works like useState
         queryFn: getPostdata,//works like useEffect
         placeholderData: keepPreviousData,
+    })
+
+    //use mutation
+    {/* 
+        const mutation = useMutation(mutationFn, {
+        // optional configuration here
+        })
+        */}
+    //! mutation function to delete the post
+    const mutation = useMutation({
+        mutationFn: (id) => deletePost(id),
     })
     if (isLoading) return <h2>Loading...</h2>
     if (isError) return <h2>oops! Something Went Wrong: {error.message}</h2>
@@ -36,7 +46,9 @@ const FetchRq = () => {
                             <h2>{title}</h2>
                             <p>{body}</p>
                         </NavLink>
-
+                        <div className='delete'>
+                            <button onClick={() => mutation.mutate(id)}>Delete</button>
+                        </div>
                     </div>
                 );
             })}

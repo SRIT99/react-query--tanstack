@@ -22,3 +22,8 @@ export const fetchSinglePost = async (id) => {
         console.log(error)
     }
 }
+
+export const deletePost = (id) => {
+    console.log(`delete post running ${id}`)
+    return api.delete(`/posts/${id}`)
+}
