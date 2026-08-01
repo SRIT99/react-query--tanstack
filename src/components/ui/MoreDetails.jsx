@@ -6,14 +6,13 @@ import { NavLink, useParams } from 'react-router-dom'
 const MoreDetails = () => {
     const { id } = useParams()
     const { data, isError, isPending, error } = useQuery({
-        queryKey: ['posts'],
+        queryKey: ['posts', id],
         queryFn: () => fetchSinglePost(id),
         staleTime: 100000,
     })
     if (isPending) return <h2>Loading...</h2>
-    if (isError) return <h2>oops! Something Went Wrong: {error.message}</h2>
+    if (isError) return <h2>oops! Something Went Wrong: {error.message || 'Something Went Wrong'}</h2>
 
-    const { title, body } = data
     return (
         <div className="single-post-page">
 
