@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { deletePost, fetchPosts } from '../API/Api'
-import { keepPreviousData, useMutation, useQuery } from '@tanstack/react-query'
+import { deletePost, fetchPosts, updatePost } from '../API/Api'
+import { keepPreviousData, useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 
 const FetchRq = () => {
+    const queryClient = useQueryClient()
     const [page, setPage] = useState(0)
     const getPostdata = async () => {
         try {
@@ -31,6 +32,22 @@ const FetchRq = () => {
     //! mutation function to delete the post
     const mutation = useMutation({
         mutationFn: (id) => deletePost(id),
+        onSuccess: (data, id) => {
+            queryClient.setQueryData(["posts", page], (elem) => {
+                return elem?.filter((post) => post.id != id)
+            })
+        }
+    })
+    //! mutation function to update the post
+    const updateMutation = useMutation({
+        mutationFn: (id) => updatePost(id),
+        onSuccess: (apiData, postId) => {
+            queryClient.setQueryData(["posts", page], (postData) => {
+                return postData?.map((postElem) => {
+                    return postElem.id === postId ? { ...postElem, title: apiData.data.title } : postElem;
+                })
+            })
+        }
     })
     if (isLoading) return <h2>Loading...</h2>
     if (isError) return <h2>oops! Something Went Wrong: {error.message}</h2>
@@ -46,8 +63,13 @@ const FetchRq = () => {
                             <h2>{title}</h2>
                             <p>{body}</p>
                         </NavLink>
-                        <div className='delete'>
-                            <button onClick={() => mutation.mutate(id)}>Delete</button>
+                        <div className='buttons'>
+                            <div className='delete'>
+                                <button onClick={() => mutation.mutate(id)}>Delete</button>
+                            </div>
+                            <div className='delete'>
+                                <button onClick={() => updateMutation.mutate(id)}>Update</button>
+                            </div>
                         </div>
                     </div>
                 );

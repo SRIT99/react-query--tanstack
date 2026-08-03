@@ -304,3 +304,10 @@ a {
   opacity: .5;
   cursor: not-allowed;
 }
+.buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8;
+
+}

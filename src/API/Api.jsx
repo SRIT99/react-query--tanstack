@@ -27,3 +27,7 @@ export const deletePost = (id) => {
     console.log(`delete post running ${id}`)
     return api.delete(`/posts/${id}`)
 }
+export const updatePost = (id) => {
+    console.log(`update post running ${id}`)
+    return api.patch(`/posts/${id}`, { title: "updated title" })
+}
