@@ -9,6 +9,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import Reactquery from './pages/Reactquery'
 import Polling from './pages/Polling'
 import MoreDetails from './components/ui/MoreDetails'
+import Gallery from './pages/gallery'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: '/rc/:id',
         element: <MoreDetails />
+      },
+      {
+        path: '/gallery',
+        element: <Gallery />
       }
     ]
   }

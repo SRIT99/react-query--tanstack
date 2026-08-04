@@ -11,6 +11,7 @@ const Header = () => {
                 <Link to='/polling'>Polling rq</Link>
                 <Link to='/rc'>Fetch Rq</Link>
                 <Link to='/rq'>Fetch comments</Link>
+                <Link to='/gallery'>Gallery</Link>
 
             </div>
         </div>
